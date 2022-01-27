@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  padding: 4px;
+}
+
+.container {
+  text-align: center;
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+.slider__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500vw;
+  height: 20vh;
+  margin: 14px 0;
+}
+
+.slider__container li {
+  width: 100vw;
+  height: 100%;
+  line-height: 20vh;
+  color: white;
+  font-size: 32px;
+}
+
+.slider__container li:nth-child(odd) {
+  background-color: thistle;
+}
+
+.slider__container:nth-child(even) {
+  background-color: steelblue;
+}
