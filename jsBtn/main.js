@@ -1,37 +1,32 @@
 const sliderContainer = document.querySelector(".slider__container");
 const leftBtn = document.querySelector(".js-leftBtn");
 const rightBtn = document.querySelector(".js-rightBtn");
+const upBtn = document.querySelector(".js-upBtn");
+const downBtn = document.querySelector(".js-downBtn");
 
-let leftClick = 0;
-let rightClick = 0;
+let count = 0;
 
 const handleLeftBtnClick = () => {
-  if (leftClick < sliderContainer.children.length) {
-    leftClick++;
-    console.log(leftClick);
-    switch (leftClick) {
-      case 1:
-        sliderContainer.style.transform = "translateX(-400vw)";
-        break;
-      case 2:
-        sliderContainer.style.transform = "translateX(-300vw)";
-        break;
-      case 3:
-        sliderContainer.style.transform = "translateX(-200vw)";
-        break;
-      case 4:
-        sliderContainer.style.transform = "translateX(-100vw)";
-        break;
-      case 5:
-        sliderContainer.style.transform = "translateX(0)";
-        break;
-    }
+  if (sliderContainer.children[count].id === "first") {
+    count = sliderContainer.children.length - 1;
+    sliderContainer.style.transform = `translateX(-${100 * count}vw)`;
   } else {
-    leftClick = 0;
+    if (count <= 0) return;
+    count--;
+    sliderContainer.style.transform = `translateX(-${100 * count}vw)`;
   }
 };
 
-const handleRightBtnClick = () => {};
+const handleRightBtnClick = () => {
+  if (sliderContainer.children[count].id === "last") {
+    count = 0;
+    sliderContainer.style.transform = `translateX(-${100 * count}vw)`;
+  } else {
+    if (count >= sliderContainer.children.length) return;
+    count++;
+    sliderContainer.style.transform = `translateX(-${100 * count}vw)`;
+  }
+};
 
 leftBtn.addEventListener("click", handleLeftBtnClick);
 rightBtn.addEventListener("click", handleRightBtnClick);
